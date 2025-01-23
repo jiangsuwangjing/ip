@@ -9,7 +9,7 @@ public class Alex {
         EXIT, DISPLAY, MARK, UNMARK, TODO, DEADLINE, EVENT, DELETE
     }
 
-    private static Command parseCommand(String input) throws InvalidInputException {
+    private static Command parseCommand(String input) throws AlexException {
         if (input.equals(exitCommand)) {
             return Command.EXIT;
         } else if (input.equals(displayCommand)) {
@@ -27,7 +27,7 @@ public class Alex {
         } else if (input.length() > 8 && input.substring(0, 9).equals("deadline ")) {
             return Command.DEADLINE;
         } else {
-            throw new InvalidInputException();
+            throw new AlexException();
         }
     }
 
@@ -43,8 +43,8 @@ public class Alex {
         String inputStr = scanner.nextLine();
         while (!inputStr.equals(exitCommand)) {
             try {
-                Command command = parseCommand(inputStr);
                 System.out.println("____________________________________________________________");
+                Command command = parseCommand(inputStr);
                 switch (command) {
                     case DISPLAY:
                         list.displayList();
@@ -86,8 +86,14 @@ public class Alex {
                 // Separator under response
                 System.out.println("____________________________________________________________");
                 inputStr = scanner.nextLine();
-            } catch (InvalidInputException e) {
+            } catch (NumberFormatException e) {
+                System.out.println("Hey, that's not even a valid number! Stop playing...");
+            } catch (ListOutOfBoundException e) {
+                System.out.println("Hmmm, did you key in the wrong index? Try again!");
+            } catch (AlexException e) {
                 System.out.println("You hit the wrong command! Try again!");
+            } finally {
+                System.out.println("____________________________________________________________");
                 inputStr = scanner.nextLine();
             }
         }

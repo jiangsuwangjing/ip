@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class TaskList {
     private ArrayList<Task> list;
@@ -18,12 +19,18 @@ public class TaskList {
         }
     }
 
-    public void mark(int index, boolean isDone) {
+    public void mark(int index, boolean isDone) throws ListOutOfBoundException {
+        if (index >= list.size() || index < 0) {
+            throw new ListOutOfBoundException();
+        }
         String responseMsg = list.get(index - 1).setStatus(isDone);
         System.out.printf(responseMsg);
     }
 
-    public void delete(int index) {
+    public void delete(int index) throws ListOutOfBoundException {
+        if (index >= list.size() || index < 0) {
+            throw new ListOutOfBoundException();
+        }
         String task = list.remove(index).toString();
         System.out.println("Noted, I've removed this task:");
         System.out.println(task);
