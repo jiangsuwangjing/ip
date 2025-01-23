@@ -1,28 +1,36 @@
 public class Task {
     private String content;
-    private boolean isDone;
+    private boolean status;
 
     public Task(String content) {
         this.content = content;
-        this.isDone = false;
+        this.status = false;
+    }
+
+    public String getContent() {
+        return this.content;
+    }
+
+    public boolean isDone() {
+        return this.status;
     }
 
     public String setStatus(boolean isSetDone) {
         if (isSetDone) {
-            this.isDone = true;
+            this.status = true;
+            return ("Nice! I've marked this task as done:\n" + this.toString() + "\n");
         } else {
-            this.isDone = false;
+            this.status = false;
+            return ("Ok, I've marked this task as not done yet" + this.toString() + "\n");
         }
-        return ("Nice! I've marked this task as done:\n" + this.toString());
-
     }
 
     @Override
     public String toString() {
         String checkBox = "[ ] ";
-        if (isDone) {
+        if (this.isDone()) {
             checkBox = "[X] ";
         }
-        return checkBox + content + "\n";
+        return checkBox + getContent();
     }
 }
