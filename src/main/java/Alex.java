@@ -38,10 +38,9 @@ public class Alex {
         System.out.println("____________________________________________________________");
 
         Scanner scanner = new Scanner(System.in);
-        boolean flag = true;
-        while (flag) {
+        String inputStr = scanner.nextLine();
+        while (!inputStr.equals(exitCommand)) {
             try {
-                String inputStr = scanner.nextLine();
                 Command command = parseCommand(inputStr);
                 System.out.println("____________________________________________________________");
                 switch (command) {
@@ -77,11 +76,10 @@ public class Alex {
                         newTask = new Event(content, startTime, endTime);
                         list.addItem(newTask);
                         break;
-                    case EXIT:
-                        flag = false;
                 }
                 // Separator under response
                 System.out.println("____________________________________________________________");
+                inputStr = scanner.nextLine();
             } catch (InvalidInputException e) {
                 System.out.println("You hit the wrong command! Try again!");
             }

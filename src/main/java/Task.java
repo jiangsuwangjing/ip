@@ -21,7 +21,7 @@ public class Task {
             return ("Nice! I've marked this task as done:\n" + this.toString() + "\n");
         } else {
             this.status = false;
-            return ("Ok, I've marked this task as not done yet" + this.toString() + "\n");
+            return ("Ok, I've marked this task as not done yet:\n" + this.toString() + "\n");
         }
     }
 
