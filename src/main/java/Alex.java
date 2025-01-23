@@ -6,7 +6,7 @@ public class Alex {
 
     private static TaskList list = new TaskList();
     private enum Command {
-        EXIT, DISPLAY, MARK, UNMARK, TODO, DEADLINE, EVENT, DELETE
+        DISPLAY, MARK, UNMARK, TODO, DEADLINE, EVENT, DELETE, EXIT
     }
 
     private static Command parseCommand(String input) throws AlexException {
