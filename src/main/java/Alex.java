@@ -6,7 +6,7 @@ public class Alex {
 
     private static TaskList list = new TaskList();
     private enum Command {
-        EXIT, DISPLAY, MARK, UNMARK, TODO, DEADLINE, EVENT
+        EXIT, DISPLAY, MARK, UNMARK, TODO, DEADLINE, EVENT, DELETE
     }
 
     private static Command parseCommand(String input) throws InvalidInputException {
@@ -22,6 +22,8 @@ public class Alex {
             return Command.EVENT;
         } else if (input.length() > 6 && input.substring(0, 7).equals("unmark ")) {
             return Command.UNMARK;
+        } else if (input.length() > 6 && input.substring(0, 7).equals("delete ")) {
+            return Command.DELETE;
         } else if (input.length() > 8 && input.substring(0, 9).equals("deadline ")) {
             return Command.DEADLINE;
         } else {
@@ -76,12 +78,17 @@ public class Alex {
                         newTask = new Event(content, startTime, endTime);
                         list.addItem(newTask);
                         break;
+                    case DELETE:
+                        indexStr = inputStr.substring(7);
+                        index = Integer.parseInt(indexStr);
+                        list.delete(index);
                 }
                 // Separator under response
                 System.out.println("____________________________________________________________");
                 inputStr = scanner.nextLine();
             } catch (InvalidInputException e) {
                 System.out.println("You hit the wrong command! Try again!");
+                inputStr = scanner.nextLine();
             }
         }
 
