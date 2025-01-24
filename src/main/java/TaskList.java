@@ -11,9 +11,11 @@ public class TaskList {
     public void addItem(Task task) {
         list.add(task);
         System.out.printf("Ok I've added this task:\n%s\n", task.toString());
+        System.out.printf("Now you have %d tasks in the list.\n", list.size());
     }
 
     public void displayList() {
+        System.out.println("Here are the tasks in your list");
         for (int i = 0; i < list.size(); i++) {
             System.out.printf("%d.%s\n", i + 1, list.get(i).toString());
         }

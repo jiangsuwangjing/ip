@@ -32,12 +32,15 @@ public class Alex {
     }
 
     public static void main(String[] args) {
-        System.out.println("____________________________________________________________");
-        System.out.println("Hello! I'm Alex.\nWhat can I do for you?");
-        System.out.println("____________________________________________________________");
-        System.out.println("I will keep track of what you said! Say \"list\" to check.");
-        System.out.println("Say \"bye\" if you are leaving...");
-        System.out.println("____________________________________________________________");
+        System.out.println("""
+                ____________________________________________________________
+                Hello! I'm Alex.
+                What can I do for you?
+                ____________________________________________________________
+                I will keep track of what you said! Say \"list\" to check.
+                Say \"bye\" if you are leaving...
+                ____________________________________________________________
+                """);
 
         Scanner scanner = new Scanner(System.in);
         String inputStr = scanner.nextLine();
