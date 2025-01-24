@@ -39,8 +39,7 @@ public class Alex {
                 ____________________________________________________________
                 I will keep track of what you said! Say \"list\" to check.
                 Say \"bye\" if you are leaving...
-                ____________________________________________________________
-                """);
+                ____________________________________________________________""");
 
         Scanner scanner = new Scanner(System.in);
         String inputStr = scanner.nextLine();
