@@ -3,8 +3,18 @@ public class Task {
     private boolean status;
 
     public Task(String content) {
-        this.content = content;
+        this.content = content.trim();
         this.status = false;
+    }
+
+    public Task(String content, boolean status) {
+        this.content = content;
+        this.status = status;
+    }
+
+    // Constructor with String status, 1 for done and 0 for not done
+    public Task(String content, String status) {
+        this(content, status.equals("1"));
     }
 
     public String getContent() {
@@ -13,6 +23,11 @@ public class Task {
 
     public boolean isDone() {
         return this.status;
+    }
+
+    public String getSavedDataFormat() {
+        String statusRep = status ? "1" : "0";
+        return statusRep + " | " + this.content;
     }
 
     public String setStatus(boolean isSetDone) {

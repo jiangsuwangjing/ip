@@ -4,7 +4,7 @@ public class Alex {
     private static final String exitCommand = "bye";
     private static final String displayCommand = "list";
 
-    private static TaskList list = new TaskList();
+    private static TaskList list;
     private enum Command {
         DISPLAY, MARK, UNMARK, TODO, DEADLINE, EVENT, DELETE, EXIT
     }
@@ -34,6 +34,8 @@ public class Alex {
     public static void main(String[] args) {
         Ui ui = new Ui();
         ui.printWelcomeMsg();
+        Storage storage = new Storage();
+        list = storage.loadTaskList();
 
         Scanner scanner = new Scanner(System.in);
         String inputStr = scanner.nextLine();
