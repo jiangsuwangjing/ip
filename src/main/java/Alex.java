@@ -9,7 +9,7 @@ public class Alex {
         DISPLAY, MARK, UNMARK, TODO, DEADLINE, EVENT, DELETE, EXIT
     }
 
-    private static Command parseCommand(String input) throws AlexException {
+    private static Command parseCommand(String input) throws InvalidCommandException {
         if (input.equals(exitCommand)) {
             return Command.EXIT;
         } else if (input.equals(displayCommand)) {
@@ -27,26 +27,19 @@ public class Alex {
         } else if (input.length() > 8 && input.substring(0, 9).equals("deadline ")) {
             return Command.DEADLINE;
         } else {
-            throw new AlexException();
+            throw new InvalidCommandException();
         }
     }
 
     public static void main(String[] args) {
-        System.out.println("""
-                ____________________________________________________________
-                Hello! I'm Alex.
-                What can I do for you?
-                ____________________________________________________________
-                I will keep track of what you said! Say \"list\" to check.
-                Say \"bye\" if you are leaving...
-                ____________________________________________________________
-                """);
+        Ui ui = new Ui();
+        ui.printWelcomeMsg();
 
         Scanner scanner = new Scanner(System.in);
         String inputStr = scanner.nextLine();
         while (!inputStr.equals(exitCommand)) {
             try {
-                System.out.println("____________________________________________________________");
+                ui.printDivider();
                 Command command = parseCommand(inputStr);
                 switch (command) {
                     case DISPLAY:
@@ -86,23 +79,15 @@ public class Alex {
                         index = Integer.parseInt(indexStr);
                         list.delete(index);
                 }
-                // Separator under response
-                System.out.println("____________________________________________________________");
-                inputStr = scanner.nextLine();
-            } catch (NumberFormatException e) {
-                System.out.println("Hey, that's not even a valid number! Stop playing...");
-            } catch (ListOutOfBoundException e) {
-                System.out.println("Hmmm, did you key in the wrong index? Try again!");
-            } catch (AlexException e) {
-                System.out.println("You hit the wrong command! Try again!");
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             } finally {
-                System.out.println("____________________________________________________________");
+                // Separator under response
+                ui.printDivider();
                 inputStr = scanner.nextLine();
             }
         }
 
-        System.out.println("____________________________________________________________");
-        System.out.println("Bye. Hope to see you again soon!");
-        System.out.println("____________________________________________________________");
+        ui.printExitMsg();
     }
 }
