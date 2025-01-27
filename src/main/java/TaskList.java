@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +9,10 @@ public class TaskList {
 
     public TaskList() {
         this.list = new ArrayList<>();
+    }
+
+    public TaskList(ArrayList<Task> list) {
+        this.list = list;
     }
 
     public void addItem(Task task) {
@@ -36,10 +41,15 @@ public class TaskList {
         if (index >= list.size() || index < 0) {
             throw new ListOutOfBoundException();
         }
-        String task = list.remove(index).toString();
-        System.out.println("Noted, I've removed this task:");
-        System.out.println(task);
-        ui.printTaskCount(list.size());
+        try {
+            String task = list.remove(index - 1).toString();
+            System.out.println("Noted, I've removed this task:");
+            System.out.println(task);
+            ui.printTaskCount(list.size());
+            storage.deleteLineFromFile(index);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override

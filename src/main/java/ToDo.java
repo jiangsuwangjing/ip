@@ -3,6 +3,10 @@ public class ToDo extends Task {
         super(content);
     }
 
+    public ToDo(String content, String status) {
+        super(content, status);
+    }
+
     @Override
     public String getSavedDataFormat() {
         return "T | " + super.getSavedDataFormat() + "\n";

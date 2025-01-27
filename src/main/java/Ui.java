@@ -1,6 +1,6 @@
 public class Ui {
     public void printWelcomeMsg() {
-        System.out.println("""
+        System.out.print("""
                 ____________________________________________________________
                 Hello! I'm Alex.
                 What can I do for you?

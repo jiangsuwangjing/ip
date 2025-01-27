@@ -8,6 +8,12 @@ public class Event extends Task {
         this.endTime = end.trim();
     }
 
+    public Event(String content, String status, String start, String end) {
+        super(content, status);
+        this.startTime = start.trim();
+        this.endTime = end.trim();
+    }
+
     @Override
     public String getSavedDataFormat() {
         return "E | " + super.getSavedDataFormat() + " | " + startTime + " | " + endTime + "\n";

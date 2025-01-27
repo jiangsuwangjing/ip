@@ -7,6 +7,16 @@ public class Task {
         this.status = false;
     }
 
+    public Task(String content, boolean status) {
+        this.content = content;
+        this.status = status;
+    }
+
+    // Constructor with String status, 1 for done and 0 for not done
+    public Task(String content, String status) {
+        this(content, status.equals("1"));
+    }
+
     public String getContent() {
         return this.content;
     }
