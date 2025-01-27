@@ -4,6 +4,7 @@ import java.util.List;
 public class TaskList {
     private ArrayList<Task> list;
     private Ui ui = new Ui();
+    private Storage storage = new Storage();
 
     public TaskList() {
         this.list = new ArrayList<>();
@@ -13,6 +14,7 @@ public class TaskList {
         list.add(task);
         int itemCount = list.size();
         ui.addItemResponse(task.toString(), itemCount);
+        storage.saveData(task.getSavedDataFormat());
     }
 
     public void displayList() {

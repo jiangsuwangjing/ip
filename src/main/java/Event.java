@@ -4,8 +4,13 @@ public class Event extends Task {
 
     public Event(String content, String start, String end) {
         super(content);
-        this.startTime = start;
-        this.endTime = end;
+        this.startTime = start.trim();
+        this.endTime = end.trim();
+    }
+
+    @Override
+    public String getSavedDataFormat() {
+        return "E | " + super.getSavedDataFormat() + " | " + startTime + " | " + endTime + "\n";
     }
 
     @Override

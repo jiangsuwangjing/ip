@@ -3,7 +3,7 @@ public class Task {
     private boolean status;
 
     public Task(String content) {
-        this.content = content;
+        this.content = content.trim();
         this.status = false;
     }
 
@@ -13,6 +13,11 @@ public class Task {
 
     public boolean isDone() {
         return this.status;
+    }
+
+    public String getSavedDataFormat() {
+        String statusRep = status ? "1" : "0";
+        return statusRep + " | " + this.content;
     }
 
     public String setStatus(boolean isSetDone) {
