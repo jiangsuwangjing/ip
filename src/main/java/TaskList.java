@@ -3,6 +3,7 @@ import java.util.List;
 
 public class TaskList {
     private ArrayList<Task> list;
+    private Ui ui = new Ui();
 
     public TaskList() {
         this.list = new ArrayList<>();
@@ -10,8 +11,8 @@ public class TaskList {
 
     public void addItem(Task task) {
         list.add(task);
-        System.out.printf("Ok I've added this task:\n%s\n", task.toString());
-        System.out.printf("Now you have %d tasks in the list.\n", list.size());
+        int itemCount = list.size();
+        ui.addItemResponse(task.toString(), itemCount);
     }
 
     public void displayList() {
@@ -36,7 +37,7 @@ public class TaskList {
         String task = list.remove(index).toString();
         System.out.println("Noted, I've removed this task:");
         System.out.println(task);
-        System.out.printf("Now you have %d tasks in the list.\n", list.size());
+        ui.printTaskCount(list.size());
     }
 
     @Override
