@@ -1,0 +1,10 @@
+T | 0 | A
+E | 0 | C | asdf | asasdf
+D | 0 | asdf | by asdf
+T | 0 | asdf
+T | 0 | jjjj
+D | 0 | asdf | asdfff
+E | 0 | llll | sdf | sddd
+D | 0 | read | 990
+E | 0 | rread | 120 | 990
+T | 0 | oooq

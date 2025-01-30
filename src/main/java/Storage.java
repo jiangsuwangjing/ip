@@ -10,11 +10,15 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Storage {
-    private static final String path = "./data/alex.txt";
-    private static final File dataDir = new File("./data");
-    private static final File dataFile = new File(path);
+    private String path = "./data/alex.txt";
+    private File dataDir = new File("./data");
+    private File dataFile = new File(path);
 
-    public Task loadTaskEntry(String data) throws CorruptDataException {
+    public Storage(String path) {
+        this.path = path;
+    }
+
+    private Task loadTaskEntry(String data) throws CorruptDataException {
         try {
             String[] fields = data.split(" \\| ");
             String type = fields[0];
@@ -31,7 +35,7 @@ public class Storage {
         }
     }
 
-    public TaskList loadTaskList() {
+    public TaskList load() {
         try {
             ArrayList<Task> taskList = new ArrayList<>();
             Scanner scanner = new Scanner(dataFile);
@@ -71,10 +75,5 @@ public class Storage {
         lines.remove(index - 1);
 
         Files.write(filePath, lines);
-    }
-    public static void main(String[] args) {
-        Storage storage = new Storage();
-        String data = "test test";
-        storage.saveData(data);
     }
 }
