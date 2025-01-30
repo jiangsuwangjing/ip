@@ -6,15 +6,11 @@ public class Ui {
     private Scanner scanner = new Scanner(System.in);
 
     public void printWelcomeMsg() {
-        System.out.print("""
-                ____________________________________________________________
-                Hello! I'm Alex.
-                What can I do for you?
-                ____________________________________________________________
-                I will keep track of what you said! Say \"list\" to check.
-                Say \"bye\" if you are leaving...
-                ____________________________________________________________
-                """);
+        printDivider();
+        System.out.println("Hello! I'm Alex.\n What can I do for you?");
+        printDivider();
+        System.out.println("I will keep track of what you said! Say \"list\" to check.\nSay \"bye\" if you are leaving...");
+        printDivider();
     }
 
     public String readCommand() {
