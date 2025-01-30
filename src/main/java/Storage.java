@@ -12,10 +12,14 @@ import java.util.Scanner;
 public class Storage {
     private String path = "./data/alex.txt";
     private File dataDir = new File("./data");
-    private File dataFile = new File(path);
+    private File dataFile;
+    private Path filePath;
+
 
     public Storage(String path) {
         this.path = path;
+        this.dataFile = new File(path);
+        this.filePath = Paths.get(path);
     }
 
     private Task loadTaskEntry(String data) throws CorruptDataException {
@@ -70,9 +74,15 @@ public class Storage {
     }
 
     public void deleteLineFromFile(int index) throws IOException {
-        Path filePath = Paths.get(path);
         List<String> lines = new ArrayList<>(Files.readAllLines(filePath));
         lines.remove(index - 1);
+
+        Files.write(filePath, lines);
+    }
+
+    public void updateLineInFile(int index, String updated) throws IOException {
+        List<String> lines = new ArrayList<>(Files.readAllLines(filePath));
+        lines.set(index - 1, updated);
 
         Files.write(filePath, lines);
     }

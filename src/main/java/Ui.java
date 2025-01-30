@@ -36,8 +36,8 @@ public class Ui {
         printTaskCount(count);
     }
 
-    public void showErrorMsg(String msg) {
-        System.out.println(msg);
+    public void showErrorMsg(Exception e) {
+        System.out.println(e.getMessage());
     }
 
     public void showLoadingError() {

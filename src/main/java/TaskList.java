@@ -26,9 +26,14 @@ public class TaskList {
         }
     }
 
-    public void mark(int index, boolean isDone, Ui ui, Storage storage)  {
-        String responseMsg = list.get(index - 1).setStatus(isDone);
-        System.out.printf(responseMsg);
+    public void mark(int index, boolean isDone, Ui ui, Storage storage) {
+        try {
+            String responseMsg = list.get(index - 1).setStatus(isDone);
+            storage.updateLineInFile(index, list.get(index - 1).getSavedDataFormat().stripTrailing());
+            System.out.printf(responseMsg);
+        } catch (IOException e) {
+            ui.showErrorMsg(e);
+        }
     }
 
     public void delete(int index, Ui ui, Storage storage) {
@@ -39,7 +44,7 @@ public class TaskList {
             ui.printTaskCount(list.size());
             storage.deleteLineFromFile(index);
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            ui.showErrorMsg(e);
         }
     }
 
