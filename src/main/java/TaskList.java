@@ -1,11 +1,8 @@
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class TaskList {
     private ArrayList<Task> list;
-    private Ui ui = new Ui();
-    private Storage storage = new Storage();
 
     public TaskList() {
         this.list = new ArrayList<>();
@@ -15,7 +12,7 @@ public class TaskList {
         this.list = list;
     }
 
-    public void addItem(Task task) {
+    public void addItem(Task task, Ui ui, Storage storage) {
         list.add(task);
         int itemCount = list.size();
         ui.addItemResponse(task.toString(), itemCount);
@@ -29,18 +26,12 @@ public class TaskList {
         }
     }
 
-    public void mark(int index, boolean isDone) throws ListOutOfBoundException {
-        if (index >= list.size() || index < 0) {
-            throw new ListOutOfBoundException();
-        }
+    public void mark(int index, boolean isDone, Ui ui, Storage storage)  {
         String responseMsg = list.get(index - 1).setStatus(isDone);
         System.out.printf(responseMsg);
     }
 
-    public void delete(int index) throws ListOutOfBoundException {
-        if (index >= list.size() || index < 0) {
-            throw new ListOutOfBoundException();
-        }
+    public void delete(int index, Ui ui, Storage storage) {
         try {
             String task = list.remove(index - 1).toString();
             System.out.println("Noted, I've removed this task:");
@@ -52,11 +43,18 @@ public class TaskList {
         }
     }
 
+    public boolean checkInBound(int index) throws ListOutOfBoundException {
+        if (index >= list.size() || index < 0) {
+            throw new ListOutOfBoundException();
+        }
+        return true;
+    }
+
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();
         for (Integer i = 1; i <= list.size(); i++) {
-            str.append(i.toString() + ". " + list.get(i - 1).toString());
+            str.append(i + ". " + list.get(i - 1).toString());
             str.append("\n");
         }
         return str.toString();
