@@ -20,7 +20,7 @@ public class Alex {
                 command.execute(tasks, ui, storage);
                 isExit = command.isExit();
             } catch (Exception e) {
-                ui.showErrorMsg(e.getMessage());
+                ui.showErrorMsg(e);
             } finally {
                 // Separator under response
                 ui.printDivider();
@@ -29,6 +29,6 @@ public class Alex {
     }
 
     public static void main(String[] args) {
-        new Alex("data/tasks.txt").run();
+        new Alex("data/alex.txt").run();
     }
 }
