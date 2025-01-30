@@ -1,3 +1,9 @@
+package alex.task;
+
+import alex.*;
+import alex.command.*;
+import alex.exceptions.*;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -49,7 +55,7 @@ public class TaskList {
     }
 
     public boolean checkInBound(int index) throws ListOutOfBoundException {
-        if (index >= list.size() || index < 0) {
+        if (index > list.size() || index < 0) {
             throw new ListOutOfBoundException();
         }
         return true;

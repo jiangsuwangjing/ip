@@ -1,3 +1,10 @@
+package alex;
+
+import alex.command.*;
+import alex.exceptions.*;
+import alex.task.*;
+import alex.*;
+
 public class Alex {
     private TaskList tasks;
     private Storage storage;

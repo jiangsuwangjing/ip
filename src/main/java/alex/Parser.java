@@ -1,3 +1,9 @@
+package alex;
+
+import alex.command.*;
+import alex.exceptions.*;
+import alex.task.*;
+
 public class Parser {
     private static enum CommandType {
         DISPLAY, MARK, UNMARK, TODO, DEADLINE, EVENT, DELETE, EXIT
@@ -38,7 +44,6 @@ public class Parser {
                 case DISPLAY:
                     return new DisplayCommand();
                 case MARK:
-                    String[] args = inputStr.toLowerCase().split("mark ", 2);
                     String indexStr = inputStr.substring(5);
                     int index = Integer.parseInt(indexStr);
                     tasks.checkInBound(index);

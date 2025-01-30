@@ -1,3 +1,5 @@
+package alex.task;
+
 public class Task {
     private String content;
     private boolean status;

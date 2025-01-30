@@ -1,3 +1,8 @@
+package alex;
+
+import alex.task.*;
+import alex.exceptions.*;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -6,7 +11,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Storage {
@@ -74,14 +78,14 @@ public class Storage {
     }
 
     public void deleteLineFromFile(int index) throws IOException {
-        List<String> lines = new ArrayList<>(Files.readAllLines(filePath));
+        ArrayList<String> lines = new ArrayList<>(Files.readAllLines(filePath));
         lines.remove(index - 1);
 
         Files.write(filePath, lines);
     }
 
     public void updateLineInFile(int index, String updated) throws IOException {
-        List<String> lines = new ArrayList<>(Files.readAllLines(filePath));
+        ArrayList<String> lines = new ArrayList<>(Files.readAllLines(filePath));
         lines.set(index - 1, updated);
 
         Files.write(filePath, lines);

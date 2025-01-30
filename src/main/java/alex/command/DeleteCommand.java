@@ -1,3 +1,9 @@
+package alex.command;
+
+import alex.*;
+import alex.task.*;
+import alex.exceptions.*;
+
 public class DeleteCommand extends Command {
     private int index;
 

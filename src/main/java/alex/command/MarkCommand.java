@@ -1,3 +1,9 @@
+package alex.command;
+
+import alex.*;
+import alex.task.*;
+import alex.exceptions.*;
+
 public class MarkCommand extends Command {
     private int index;
     private boolean markDone;
