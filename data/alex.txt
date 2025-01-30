@@ -1,6 +1,1 @@
-D | 0 | asdf | asdfff
-E | 0 | llll | sdf | sddd
-D | 0 | read | 990
-E | 1 | rread | 120 | 990
-T | 0 | oooq
-T | 0 | asdf
+D | 0 | A | 1928-12-02
