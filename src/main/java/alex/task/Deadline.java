@@ -8,16 +8,31 @@ public class Deadline extends Task {
     private LocalDate time;
 
 
+    /**
+     * Constructor for creating the deadline
+     * @param content details of the task
+     * @param time the time of deadline
+     */
     public Deadline (String content, String time) {
             super(content);
             this.timeStr = time;
     }
 
+    /**
+     * Constructor for loading tasks from storage
+     * @param content details of task
+     * @param status the current status read from storage
+     * @param time the time of deadline
+     */
     public Deadline (String content, String status, String time) {
         super(content, status);
         this.timeStr = time;
     }
 
+    /**
+     * Checks if the time given is in valid date format that can be parsed
+     * @return if the format is valid
+     */
     public boolean isValidDateFormat() {
         try {
             time = LocalDate.parse(timeStr);
@@ -27,6 +42,10 @@ public class Deadline extends Task {
         }
     }
 
+    /**
+     * Get the format to be saved in the storage
+     * @return data to be saved
+     */
     @Override
     public String getSavedDataFormat() {
         return "D | " + super.getSavedDataFormat() + " | " + this.timeStr + "\n";

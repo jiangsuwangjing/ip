@@ -13,6 +13,9 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Handles the operations involving changing the storage
+ */
 public class Storage {
     private String path = "./data/alex.txt";
     private File dataDir = new File("./data");
@@ -43,6 +46,10 @@ public class Storage {
         }
     }
 
+    /**
+     * Load all the tasks stored in the file directory
+     * @return a TaskList containing all the tasks
+     */
     public TaskList load() {
         try {
             ArrayList<Task> taskList = new ArrayList<>();
@@ -60,6 +67,10 @@ public class Storage {
         return new TaskList();
     }
 
+    /**
+     * Saves the string data into data file
+     * @param data data in the storage format
+     */
     public void saveData(String data) {
         try {
             if (!dataDir.exists()) {
@@ -77,6 +88,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Delete a line in file
+     * @param index the index of the line starting from 1
+     * @throws IOException
+     */
     public void deleteLineFromFile(int index) throws IOException {
         ArrayList<String> lines = new ArrayList<>(Files.readAllLines(filePath));
         lines.remove(index - 1);
@@ -84,6 +100,12 @@ public class Storage {
         Files.write(filePath, lines);
     }
 
+    /**
+     * Update the line of the index with a new String
+     * @param index index of line counting from 1
+     * @param updated the new string to replace the original line
+     * @throws IOException
+     */
     public void updateLineInFile(int index, String updated) throws IOException {
         ArrayList<String> lines = new ArrayList<>(Files.readAllLines(filePath));
         lines.set(index - 1, updated);

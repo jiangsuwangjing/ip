@@ -4,6 +4,9 @@ import alex.command.*;
 import alex.exceptions.*;
 import alex.task.*;
 
+/**
+ * Parser parses user input string into Commands
+ */
 public class Parser {
     private static enum CommandType {
         DISPLAY, MARK, UNMARK, TODO, DEADLINE, EVENT, DELETE, EXIT
@@ -35,6 +38,13 @@ public class Parser {
         }
     }
 
+    /**
+     * Parses string into commands
+     * @param inputStr original user input
+     * @param tasks the task list that are used in generating some commands
+     * @return the command that can be executed
+     * @throws Exception from parsing the string, mostly AlexException
+     */
     public static Command parse(String inputStr, TaskList tasks) throws Exception {
         try {
             CommandType commandType;

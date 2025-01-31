@@ -5,6 +5,9 @@ import alex.exceptions.*;
 import alex.task.*;
 import alex.*;
 
+/**
+ * The main program of Alex
+ */
 public class Alex {
     private TaskList tasks;
     private Storage storage;
@@ -16,6 +19,9 @@ public class Alex {
         tasks = storage.load();
     }
 
+    /**
+     * The main execution logic
+     */
     public void run() {
         ui.printWelcomeMsg();
         boolean isExit = false;

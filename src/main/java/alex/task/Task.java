@@ -1,5 +1,8 @@
 package alex.task;
 
+/**
+ * The general class of all tasks
+ */
 public class Task {
     private String content;
     private boolean status;
@@ -27,11 +30,20 @@ public class Task {
         return this.status;
     }
 
+    /**
+     * Get the incomplete format to be saved in storage for subclasses
+     * @return data to be saved
+     */
     public String getSavedDataFormat() {
         String statusRep = status ? "1" : "0";
         return statusRep + " | " + this.content;
     }
 
+    /**
+     * Change the current status of completion
+     * @param isSetDone the target status
+     * @return the reponse message to be printed
+     */
     public String setStatus(boolean isSetDone) {
         if (isSetDone) {
             this.status = true;
