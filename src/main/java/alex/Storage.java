@@ -33,10 +33,10 @@ public class Storage {
             String status = fields[1];
             String content = fields[2];
             switch (type) {
-                case "T": return new ToDo(content, status);
-                case "D": return new Deadline(content, status, fields[3]);
-                case "E": return new Event(content, status, fields[3], fields[4]);
-                default: throw new InvalidTaskTypeException();
+            case "T": return new ToDo(content, status);
+            case "D": return new Deadline(content, status, fields[3]);
+            case "E": return new Event(content, status, fields[3], fields[4]);
+            default: throw new InvalidTaskTypeException();
             }
         } catch (IndexOutOfBoundsException e) {
             throw new CorruptDataException(e.getMessage());
