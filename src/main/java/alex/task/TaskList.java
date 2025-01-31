@@ -66,6 +66,16 @@ public class TaskList {
         return list.get(index - 1);
     }
 
+    public ArrayList<Task> findTasks(String keyword) {
+        ArrayList<Task> result = new ArrayList<>();
+        for (Task task : list) {
+            if (task.getContent().toLowerCase().contains(keyword.toLowerCase())) {
+                result.add(task);
+            }
+        }
+        return result;
+    }
+
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();

@@ -1,5 +1,8 @@
 package alex;
 
+import alex.task.Task;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ui {
@@ -38,6 +41,17 @@ public class Ui {
         System.out.println(e.getMessage());
     }
 
+    public void showSearchResult(ArrayList<Task> result) {
+        if (result.size() == 0) {
+            System.out.println("Sorry, there are no matching results.");
+        } else {
+            System.out.println("Here are the matching tasks in your list:");
+            int count = 1;
+            for (Task task: result) {
+                System.out.println(count + "." + task);
+            }
+        }
+    }
     public void showLoadingError() {
         System.out.println("There is something wrong with loading the data...");
     }

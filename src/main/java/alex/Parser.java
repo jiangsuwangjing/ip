@@ -6,7 +6,7 @@ import alex.task.*;
 
 public class Parser {
     private static enum CommandType {
-        DISPLAY, MARK, UNMARK, TODO, DEADLINE, EVENT, DELETE, EXIT
+        DISPLAY, MARK, UNMARK, TODO, DEADLINE, EVENT, DELETE, EXIT, FIND
     }
 
     private static final String exitCommand = "bye";
@@ -22,6 +22,8 @@ public class Parser {
             return CommandType.MARK;
         } else if (input.length() > 4 && input.substring(0, 5).equals("todo ")) {
             return CommandType.TODO;
+        } else if (input.length() > 4 && input.substring(0, 5).equals("find ")) {
+            return CommandType.FIND;
         } else if (input.length() > 5 && input.substring(0, 6).equals("event ")) {
             return CommandType.EVENT;
         } else if (input.length() > 6 && input.substring(0, 7).equals("unmark ")) {
@@ -41,38 +43,40 @@ public class Parser {
             commandType = Parser.extractCommand(inputStr);
 
             switch (commandType) {
-                case DISPLAY:
-                    return new DisplayCommand();
-                case MARK:
-                    String indexStr = inputStr.substring(5);
-                    int index = Integer.parseInt(indexStr);
-                    tasks.checkInBound(index);
-                    return new MarkCommand(index, true);
-                case UNMARK:
-                    indexStr = inputStr.substring(7);
-                    index = Integer.parseInt(indexStr);
-                    tasks.checkInBound(index);
-                    return new MarkCommand(index, false);
-                case TODO:
-                    return new AddCommand(new ToDo(inputStr.substring(5)));
-                case DEADLINE:
-                    int timeIndex = inputStr.indexOf("/by");
-                    String content = inputStr.substring(9, timeIndex);
-                    return new AddCommand(new Deadline(content, inputStr.substring(timeIndex + 4)));
-                case EVENT:
-                    int startIndex = inputStr.indexOf("/from");
-                    content = inputStr.substring(6, startIndex);
-                    int endIndex = inputStr.indexOf("/to");
-                    String startTime = inputStr.substring(startIndex + 6, endIndex - 1);
-                    String endTime = inputStr.substring(endIndex + 4);
-                    return new AddCommand(new Event(content, startTime, endTime));
-                case DELETE:
-                    indexStr = inputStr.substring(7);
-                    index = Integer.parseInt(indexStr);
-                    tasks.checkInBound(index);
-                    return new DeleteCommand(index);
-                case EXIT:
-                    return new ExitCommand();
+            case DISPLAY:
+                return new DisplayCommand();
+            case MARK:
+                String indexStr = inputStr.substring(5);
+                int index = Integer.parseInt(indexStr);
+                tasks.checkInBound(index);
+                return new MarkCommand(index, true);
+            case UNMARK:
+                indexStr = inputStr.substring(7);
+                index = Integer.parseInt(indexStr);
+                tasks.checkInBound(index);
+                return new MarkCommand(index, false);
+            case TODO:
+                return new AddCommand(new ToDo(inputStr.substring(5)));
+            case FIND:
+                return new FindCommand(inputStr.substring(5));
+            case DEADLINE:
+                int timeIndex = inputStr.indexOf("/by");
+                String content = inputStr.substring(9, timeIndex);
+                return new AddCommand(new Deadline(content, inputStr.substring(timeIndex + 4)));
+            case EVENT:
+                int startIndex = inputStr.indexOf("/from");
+                content = inputStr.substring(6, startIndex);
+                int endIndex = inputStr.indexOf("/to");
+                String startTime = inputStr.substring(startIndex + 6, endIndex - 1);
+                String endTime = inputStr.substring(endIndex + 4);
+                return new AddCommand(new Event(content, startTime, endTime));
+            case DELETE:
+                indexStr = inputStr.substring(7);
+                index = Integer.parseInt(indexStr);
+                tasks.checkInBound(index);
+                return new DeleteCommand(index);
+            case EXIT:
+                return new ExitCommand();
             }
         } catch (AlexException e) {
             throw e;
