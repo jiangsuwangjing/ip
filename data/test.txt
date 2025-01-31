@@ -1,0 +1,68 @@
+D | 1 | PS1 | 2025-02-04
+D | 0 | PS1 | 2025-02-04
+E | 1 | meeting | 3pm | 5pm
+D | 0 | PS1 | 2025-02-04
+E | 0 | meeting | 3pm | 5pm
+D | 0 | PS1 | 2025-02-04
+E | 0 | meeting | 3pm | 5pm
+D | 0 | PS1 | 2025-02-04
+E | 0 | meeting | 3pm | 5pm
+D | 0 | PS1 | 2025-02-04
+E | 0 | meeting | 3pm | 5pm
+T | 0 | Lecture 1
+D | 0 | PS1 | 2025-02-04
+E | 0 | meeting | 3pm | 5pm
+T | 0 | Lecture 1
+D | 0 | PS1 | 2025-02-04
+E | 0 | meeting | 3pm | 5pm
+T | 0 | Lecture 1
+D | 0 | PS1 | 2025-02-04
+E | 0 | meeting | 3pm | 5pm
+T | 0 | Lecture 1
+D | 0 | PS1 | 2025-02-04
+E | 0 | meeting | 3pm | 5pm
+T | 0 | Lecture 1
+D | 0 | PS1 | 2025-02-04
+E | 0 | meeting | 3pm | 5pm
+T | 0 | Lecture 1
+D | 0 | PS1 | 2025-02-04
+E | 0 | meeting | 3pm | 5pm
+T | 0 | Lecture 1
+D | 0 | PS1 | 2025-02-04
+E | 0 | meeting | 3pm | 5pm
+T | 0 | Lecture 1
+D | 0 | PS1 | 2025-02-04
+E | 0 | meeting | 3pm | 5pm
+T | 0 | Lecture 1
+D | 0 | PS1 | 2025-02-04
+E | 0 | meeting | 3pm | 5pm
+T | 0 | Lecture 1
+D | 0 | PS1 | 2025-02-04
+E | 0 | meeting | 3pm | 5pm
+T | 0 | Lecture 1
+D | 0 | PS1 | 2025-02-04
+E | 0 | meeting | 3pm | 5pm
+T | 0 | Lecture 1
+D | 0 | PS1 | 2025-02-04
+E | 0 | meeting | 3pm | 5pm
+T | 0 | Lecture 1
+D | 0 | PS1 | 2025-02-04
+E | 0 | meeting | 3pm | 5pm
+T | 0 | Lecture 1
+D | 0 | PS1 | 2025-02-04
+E | 0 | meeting | 3pm | 5pm
+T | 0 | Lecture 1
+D | 0 | PS1 | 2025-02-04
+E | 0 | meeting | 3pm | 5pm
+T | 0 | Lecture 1
+D | 0 | PS1 | 2025-02-04
+E | 0 | meeting | 3pm | 5pm
+T | 0 | Lecture 1
+D | 0 | PS1 | 2025-02-04
+E | 0 | meeting | 3pm | 5pm
+T | 0 | Lecture 1
+D | 0 | PS1 | 2025-02-04
+E | 0 | meeting | 3pm | 5pm
+T | 0 | Lecture 1
+D | 0 | PS1 | 2025-02-04
+E | 0 | meeting | 3pm | 5pm

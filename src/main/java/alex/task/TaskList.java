@@ -4,6 +4,7 @@ import alex.*;
 import alex.command.*;
 import alex.exceptions.*;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -59,6 +60,10 @@ public class TaskList {
             throw new ListOutOfBoundException();
         }
         return true;
+    }
+
+    public Task getTask(int index) {
+        return list.get(index - 1);
     }
 
     @Override

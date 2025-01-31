@@ -35,7 +35,7 @@ public class Parser {
         }
     }
 
-    public static Command parse(String inputStr, TaskList tasks) throws AlexException {
+    public static Command parse(String inputStr, TaskList tasks) throws Exception {
         try {
             CommandType commandType;
             commandType = Parser.extractCommand(inputStr);
@@ -74,8 +74,10 @@ public class Parser {
                 case EXIT:
                     return new ExitCommand();
             }
-        } catch (Exception e) {
+        } catch (AlexException e) {
             throw e;
+        } catch (Exception e) {
+            throw new CommandFormatException();
         }
         return null;
     }
