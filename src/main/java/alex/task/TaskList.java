@@ -8,6 +8,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Keeps track of the list of the tasks
+ */
 public class TaskList {
     private ArrayList<Task> list;
 
@@ -19,6 +22,12 @@ public class TaskList {
         this.list = list;
     }
 
+    /**
+     * Add a task into the task list and saves it into storage
+     * @param task task to be added
+     * @param ui current ui
+     * @param storage the storage to save the task
+     */
     public void addItem(Task task, Ui ui, Storage storage) {
         list.add(task);
         int itemCount = list.size();
@@ -26,6 +35,9 @@ public class TaskList {
         storage.saveData(task.getSavedDataFormat());
     }
 
+    /**
+     * Display all the tasks in the list
+     */
     public void displayList() {
         System.out.println("Here are the tasks in your list");
         for (int i = 0; i < list.size(); i++) {
@@ -33,6 +45,13 @@ public class TaskList {
         }
     }
 
+    /**
+     * Set the status of a task of a given index
+     * @param index index of the task counting from 1
+     * @param isDone the target status
+     * @param ui system ui
+     * @param storage storage to save data
+     */
     public void mark(int index, boolean isDone, Ui ui, Storage storage) {
         try {
             String responseMsg = list.get(index - 1).setStatus(isDone);
@@ -43,6 +62,12 @@ public class TaskList {
         }
     }
 
+    /**
+     * Deletes a task from the list
+     * @param index index of the task to delete counting form 1
+     * @param ui
+     * @param storage
+     */
     public void delete(int index, Ui ui, Storage storage) {
         try {
             String task = list.remove(index - 1).toString();
@@ -55,6 +80,12 @@ public class TaskList {
         }
     }
 
+    /**
+     * Checks if the index is within the bound
+     * @param index counting from 1
+     * @return
+     * @throws ListOutOfBoundException
+     */
     public boolean checkInBound(int index) throws ListOutOfBoundException {
         if (index > list.size() || index < 0) {
             throw new ListOutOfBoundException();
@@ -62,6 +93,11 @@ public class TaskList {
         return true;
     }
 
+    /**
+     * Get task of a given index
+     * @param index counting from 1
+     * @return task of the index
+     */
     public Task getTask(int index) {
         return list.get(index - 1);
     }
