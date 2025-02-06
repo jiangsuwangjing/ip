@@ -5,7 +5,7 @@ public class ToDo extends Task {
      * Constructor for creating new ToDo
      * @param content
      */
-    public ToDo (String content) {
+    public ToDo(String content) {
         super(content);
     }
 

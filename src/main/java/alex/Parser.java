@@ -1,8 +1,19 @@
 package alex;
 
-import alex.command.*;
-import alex.exceptions.*;
-import alex.task.*;
+import alex.command.AddCommand;
+import alex.command.Command;
+import alex.command.DeleteCommand;
+import alex.command.DisplayCommand;
+import alex.command.ExitCommand;
+import alex.command.FindCommand;
+import alex.command.MarkCommand;
+import alex.exceptions.AlexException;
+import alex.exceptions.CommandFormatException;
+import alex.exceptions.InvalidCommandException;
+import alex.task.Deadline;
+import alex.task.Event;
+import alex.task.TaskList;
+import alex.task.ToDo;
 
 /**
  * Parser parses user input string into Commands
@@ -87,12 +98,13 @@ public class Parser {
                 return new DeleteCommand(index);
             case EXIT:
                 return new ExitCommand();
+            default:
+                throw new InvalidCommandException();
             }
         } catch (AlexException e) {
             throw e;
         } catch (Exception e) {
             throw new CommandFormatException();
         }
-        return null;
     }
 }

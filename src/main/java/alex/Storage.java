@@ -1,8 +1,5 @@
 package alex;
 
-import alex.task.*;
-import alex.exceptions.*;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -12,6 +9,14 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import alex.exceptions.CorruptDataException;
+import alex.exceptions.InvalidTaskTypeException;
+import alex.task.Deadline;
+import alex.task.Event;
+import alex.task.Task;
+import alex.task.TaskList;
+import alex.task.ToDo;
 
 /**
  * Handles the operations involving changing the storage

@@ -1,12 +1,11 @@
 package alex.task;
 
-import alex.*;
-import alex.command.*;
-import alex.exceptions.*;
-
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import alex.exceptions.ListOutOfBoundException;
+import alex.Storage;
+import alex.Ui;
 
 /**
  * Keeps track of the list of the tasks

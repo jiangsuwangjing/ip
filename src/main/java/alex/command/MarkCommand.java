@@ -1,8 +1,8 @@
 package alex.command;
 
-import alex.*;
-import alex.task.*;
-import alex.exceptions.*;
+import alex.Storage;
+import alex.Ui;
+import alex.task.TaskList;
 
 public class MarkCommand extends Command {
     private int index;

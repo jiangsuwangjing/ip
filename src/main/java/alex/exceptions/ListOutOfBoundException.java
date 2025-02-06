@@ -1,7 +1,5 @@
 package alex.exceptions;
 
-import alex.exceptions.AlexException;
-
 /**
  * Exception when the operation goes out of bound for task list
  */
