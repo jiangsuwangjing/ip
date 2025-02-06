@@ -1,84 +1,50 @@
 package alex;
 
 import java.util.ArrayList;
-import java.util.Scanner;
-
 import alex.task.Task;
 
-public class Ui {
-    private Scanner scanner = new Scanner(System.in);
-
+public interface Ui {
     /**
      * Prints the welcome message when launching the program
      */
-    public void printWelcomeMsg() {
-        printDivider();
-        System.out.println("Hello! I'm Alex.\n What can I do for you?");
-        printDivider();
-        System.out.println("I will keep track of what you said! Say \"list\" to check.\nSay \"bye\" if you are leaving...");
-        printDivider();
-    }
+    void printWelcomeMsg();
 
     /**
      * Reads a line from input
      * @return the command read
      */
-    public String readCommand() {
-        return scanner.nextLine();
-    }
+    void readCommand();
 
-    /**
-     * Prints divider that separates input and output
-     */
-    public void printDivider() {
-        System.out.println("____________________________________________________________");
-    }
 
     /**
      * Prints message when user exits program
      */
-    public void printExitMsg() {
-        System.out.println("Bye. Hope to see you again soon!");
-    }
+    void printExitMsg();
 
     /**
      * Prints how many tasks there are
      * @param count number of tasks
      */
-    public void printTaskCount(int count) {
-        System.out.printf("Now you have %d tasks in the list.\n", count);
-    }
+    void printTaskCount(int count);
 
     /**
      * Prints the response message when a task is added
      * @param task task details
      * @param count the count after adding the task
      */
-    public void addItemResponse(String task, int count) {
-        System.out.printf("Ok I've added this task:\n%s\n", task);
-        printTaskCount(count);
-    }
+    void addItemResponse(String task, int count);
 
     /**
      * Shows the error message when getting the error
      * @param e
      */
-    public void showErrorMsg(Exception e) {
-        System.out.println(e.getMessage());
-    }
+    void showErrorMsg(Exception e);
 
-    public void showSearchResult(ArrayList<Task> result) {
-        if (result.size() == 0) {
-            System.out.println("Sorry, there are no matching results.");
-        } else {
-            System.out.println("Here are the matching tasks in your list:");
-            int count = 1;
-            for (Task task: result) {
-                System.out.println(count + "." + task);
-            }
-        }
-    }
-    public void showLoadingError() {
-        System.out.println("There is something wrong with loading the data...");
-    }
+    /**
+     * Shows the search result
+     * @param result list of tasks
+     */
+    void showSearchResult(ArrayList<Task> result);
+
+    void printMsg(String msg);
 }
