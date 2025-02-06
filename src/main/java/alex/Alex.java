@@ -1,9 +1,8 @@
 package alex;
 
-import alex.command.*;
-import alex.exceptions.*;
-import alex.task.*;
-import alex.*;
+import alex.command.Command;
+import alex.task.TaskList;
+
 
 /**
  * The main program of Alex

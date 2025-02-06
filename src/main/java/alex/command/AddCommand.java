@@ -1,11 +1,12 @@
 package alex.command;
 
-import alex.*;
-import alex.task.*;
-import alex.exceptions.*;
+import alex.Storage;
+import alex.Ui;
+import alex.task.Task;
+import alex.task.TaskList;
 
 public class AddCommand extends Command {
-    Task task;
+    private Task task;
 
     public AddCommand(Task task) {
         this.task = task;

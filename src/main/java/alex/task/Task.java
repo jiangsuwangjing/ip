@@ -5,21 +5,21 @@ package alex.task;
  */
 public class Task {
     private String content;
-    private boolean status;
+    private boolean isCompleted;
 
     public Task(String content) {
         this.content = content.trim();
-        this.status = false;
+        this.isCompleted = false;
     }
 
-    public Task(String content, boolean status) {
+    public Task(String content, boolean isCompleted) {
         this.content = content;
-        this.status = status;
+        this.isCompleted = isCompleted;
     }
 
     // Constructor with String status, 1 for done and 0 for not done
-    public Task(String content, String status) {
-        this(content, status.equals("1"));
+    public Task(String content, String isCompleted) {
+        this(content, isCompleted.equals("1"));
     }
 
     public String getContent() {
@@ -27,7 +27,7 @@ public class Task {
     }
 
     public boolean isDone() {
-        return this.status;
+        return this.isCompleted;
     }
 
     /**
@@ -35,7 +35,7 @@ public class Task {
      * @return data to be saved
      */
     public String getSavedDataFormat() {
-        String statusRep = status ? "1" : "0";
+        String statusRep = isCompleted ? "1" : "0";
         return statusRep + " | " + this.content;
     }
 
@@ -46,11 +46,11 @@ public class Task {
      */
     public String setStatus(boolean isSetDone) {
         if (isSetDone) {
-            this.status = true;
-            return ("Nice! I've marked this task as done:\n" + this.toString() + "\n");
+            this.isCompleted = true;
+            return ("Nice! I've marked this task as done:\n" + this + "\n");
         } else {
-            this.status = false;
-            return ("Ok, I've marked this task as not done yet:\n" + this.toString() + "\n");
+            this.isCompleted = false;
+            return ("Ok, I've marked this task as not done yet:\n" + this + "\n");
         }
     }
 

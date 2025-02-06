@@ -13,9 +13,9 @@ public class Deadline extends Task {
      * @param content details of the task
      * @param time the time of deadline
      */
-    public Deadline (String content, String time) {
-            super(content);
-            this.timeStr = time;
+    public Deadline(String content, String time) {
+        super(content);
+        this.timeStr = time;
     }
 
     /**
@@ -24,7 +24,7 @@ public class Deadline extends Task {
      * @param status the current status read from storage
      * @param time the time of deadline
      */
-    public Deadline (String content, String status, String time) {
+    public Deadline(String content, String status, String time) {
         super(content, status);
         this.timeStr = time;
     }

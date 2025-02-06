@@ -1,7 +1,5 @@
 package alex.exceptions;
 
-import alex.exceptions.CorruptDataException;
-
 /**
  * Exception when the task information from storage is invalid
  */

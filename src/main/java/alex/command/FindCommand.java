@@ -1,9 +1,11 @@
 package alex.command;
 
-import alex.*;
-import alex.task.*;
-
 import java.util.ArrayList;
+
+import alex.Storage;
+import alex.Ui;
+import alex.task.Task;
+import alex.task.TaskList;
 
 public class FindCommand extends Command {
     private String keyword;

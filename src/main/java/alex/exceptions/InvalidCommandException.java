@@ -1,7 +1,5 @@
 package alex.exceptions;
 
-import alex.exceptions.AlexException;
-
 /**
  * The exception when the command keyword is not valid
  */

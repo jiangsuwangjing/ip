@@ -1,6 +1,9 @@
 package alex;
 
-import alex.task.*;
+import alex.task.TaskList;
+import alex.task.ToDo;
+import alex.task.Deadline;
+import alex.task.Event;
 import alex.command.*;
 import alex.exceptions.*;
 

@@ -1,9 +1,9 @@
 package alex;
 
-import alex.task.Task;
-
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import alex.task.Task;
 
 public class Ui {
     private Scanner scanner = new Scanner(System.in);
