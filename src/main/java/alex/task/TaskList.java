@@ -44,6 +44,16 @@ public class TaskList {
         }
     }
 
+    public void displayList(Ui ui) {
+        StringBuilder resultMessage = new StringBuilder("Here are the tasks in your list:\n");
+        int count = 1;
+        for (Task task : list) {
+            resultMessage.append(count).append(". ").append(task).append("\n");
+            count++;
+        }
+        ui.printMsg(resultMessage.toString());
+    }
+
     /**
      * Set the status of a task of a given index
      * @param index index of the task counting from 1
@@ -55,7 +65,7 @@ public class TaskList {
         try {
             String responseMsg = list.get(index - 1).setStatus(isDone);
             storage.updateLineInFile(index, list.get(index - 1).getSavedDataFormat().stripTrailing());
-            System.out.printf(responseMsg);
+            ui.printMsg(responseMsg);
         } catch (IOException e) {
             ui.showErrorMsg(e);
         }
