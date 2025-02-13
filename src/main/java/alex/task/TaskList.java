@@ -111,6 +111,14 @@ public class TaskList {
         return list.get(index - 1);
     }
 
+    /**
+     * Get all the tasks in the list
+     * @return list of tasks
+     */
+    public ArrayList<Task> getTasks() {
+        return list;
+    }
+
     public ArrayList<Task> findTasks(String keyword) {
         ArrayList<Task> result = new ArrayList<>();
         for (Task task : list) {
