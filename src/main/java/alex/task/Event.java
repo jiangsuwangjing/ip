@@ -12,6 +12,11 @@ public class Event extends Task {
      */
     public Event(String content, String start, String end) {
         super(content);
+
+        assert content != null : "Content should not be null";
+        assert start != null : "Start time should not be null";
+        assert end != null : "End time should not be null";
+
         this.startTime = start.trim();
         this.endTime = end.trim();
     }
@@ -25,6 +30,11 @@ public class Event extends Task {
      */
     public Event(String content, String status, String start, String end) {
         super(content, status);
+
+        assert content != null : "Content should not be null";
+        assert start != null : "Start time should not be null";
+        assert end != null : "End time should not be null";
+
         this.startTime = start.trim();
         this.endTime = end.trim();
     }

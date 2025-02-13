@@ -8,11 +8,15 @@ public class Task {
     private boolean isCompleted;
 
     public Task(String content) {
+        assert content != null : "Task content cannot be null";
+
         this.content = content.trim();
         this.isCompleted = false;
     }
 
     public Task(String content, boolean isCompleted) {
+        assert content != null : "Task content cannot be null";
+
         this.content = content;
         this.isCompleted = isCompleted;
     }

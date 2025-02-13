@@ -106,6 +106,8 @@ public class TaskList {
      * @return task of the index
      */
     public Task getTask(int index) {
+        assert index > 0 && index <= list.size();
+
         return list.get(index - 1);
     }
 
