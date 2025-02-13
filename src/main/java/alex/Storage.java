@@ -37,6 +37,9 @@ public class Storage {
     private Task loadTaskEntry(String data) throws CorruptDataException {
         try {
             String[] fields = data.split(" \\| ");
+
+            assert fields.length >= 3 : "Corrupt data: " + data;
+
             String type = fields[0];
             String status = fields[1];
             String content = fields[2];
@@ -112,6 +115,9 @@ public class Storage {
      * @throws IOException
      */
     public void updateLineInFile(int index, String updated) throws IOException {
+
+        assert index > 0 : "Index should be greater than 0";
+
         ArrayList<String> lines = new ArrayList<>(Files.readAllLines(filePath));
         lines.set(index - 1, updated);
 
