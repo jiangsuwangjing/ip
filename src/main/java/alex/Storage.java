@@ -117,12 +117,4 @@ public class Storage {
 
         Files.write(filePath, lines);
     }
-
-    public void clearFile() {
-        try {
-            FileWriter writer = new FileWriter(path, false);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

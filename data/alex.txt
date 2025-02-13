@@ -1,5 +1,4 @@
 D | 1 | A | 1928-12-02
-D | 1 | B | 1932-11-23
 D | 0 |  | kkkd
 T | 1 | asdf
 T | 0 | asdfff
@@ -7,3 +6,4 @@ T | 0 | reading
 T | 0 | asdf
 T | 0 | asd
 T | 0 | dd
+0 | sdf

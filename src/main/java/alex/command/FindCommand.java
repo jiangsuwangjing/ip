@@ -19,4 +19,9 @@ public class FindCommand extends Command {
         ArrayList<Task> result = tasks.findTasks(this.keyword);
         ui.showSearchResult(result);
     }
+
+    public static Command parseFind(String inputStr) {
+        String keyword = inputStr.substring(5);
+        return new FindCommand(keyword);
+    }
 }

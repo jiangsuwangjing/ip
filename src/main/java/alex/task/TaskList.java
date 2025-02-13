@@ -80,9 +80,7 @@ public class TaskList {
     public void delete(int index, Ui ui, Storage storage) {
         try {
             String task = list.remove(index - 1).toString();
-            System.out.println("Noted, I've removed this task:");
-            System.out.println(task);
-            ui.printTaskCount(list.size());
+            ui.deleteTaskResponse(task, list.size());
             storage.deleteLineFromFile(index);
         } catch (IOException e) {
             ui.showErrorMsg(e);

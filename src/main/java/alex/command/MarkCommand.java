@@ -17,4 +17,19 @@ public class MarkCommand extends Command {
     public void execute(TaskList tasks, Ui ui, Storage storage) {
         tasks.mark(index, markDone, ui, storage);
     }
+
+    public static Command parseMark(String inputStr, TaskList tasks) throws Exception {
+        String indexStr = inputStr.substring(5);
+        int index = Integer.parseInt(indexStr);
+        tasks.checkInBound(index);
+        return new MarkCommand(index, true);
+    }
+
+    public static Command parseUnmark(String inputStr, TaskList tasks) throws Exception {
+        String indexStr = inputStr.substring(7);
+        int index = Integer.parseInt(indexStr);
+        tasks.checkInBound(index);
+        return new MarkCommand(index, false);
+    }
+
 }

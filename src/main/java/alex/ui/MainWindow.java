@@ -67,7 +67,6 @@ public class MainWindow extends AnchorPane implements Ui {
 
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage)
-//                DialogBox.getDukeDialog(response, alexImage)
         );
         userInput.clear();
     }
@@ -85,25 +84,30 @@ public class MainWindow extends AnchorPane implements Ui {
         alex.run(inputStr);
     }
 
-    @FXML
-    public void printTaskCount(int count) {
-        dialogContainer.getChildren().addAll(
-                DialogBox.getAlexDialog("Now you have " + count + " tasks in the list.", alexImage)
-        );
+    public String getTaskCount(int count) {
+        return "Now you have " + count + " tasks in the list.";
     }
 
     @FXML
     public void addItemResponse(String task, int count) {
+        String message = "Got it. I've added this task:\n" + task + "\n" + getTaskCount(count);
         dialogContainer.getChildren().addAll(
-                DialogBox.getAlexDialog("Ok I've added this task:\n" + task, alexImage)
+                DialogBox.getAlexDialog(message, alexImage)
         );
-        printTaskCount(count);
     }
 
     @FXML
     public void showErrorMsg(Exception e) {
         dialogContainer.getChildren().addAll(
                 DialogBox.getAlexDialog(e.getMessage(), alexImage)
+        );
+    }
+
+    @FXML
+    public void deleteTaskResponse(String task, int count) {
+        String message = "Noted, I've removed this task:\n" + task + "\n" + getTaskCount(count);
+        dialogContainer.getChildren().addAll(
+                DialogBox.getAlexDialog(message, alexImage)
         );
     }
 
