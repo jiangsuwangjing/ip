@@ -51,6 +51,42 @@ public class Parser {
         }
     }
 
+    public static Command parseMark(String inputStr, TaskList tasks) throws Exception {
+        String indexStr = inputStr.substring(5);
+        int index = Integer.parseInt(indexStr);
+        tasks.checkInBound(index);
+        return new MarkCommand(index, true);
+    }
+
+    public static Command parseUnmark(String inputStr, TaskList tasks) throws Exception {
+        String indexStr = inputStr.substring(7);
+        int index = Integer.parseInt(indexStr);
+        tasks.checkInBound(index);
+        return new MarkCommand(index, false);
+    }
+
+    public static Command parseDeadline(String inputStr) {
+        int timeIndex = inputStr.indexOf("/by");
+        String content = inputStr.substring(9, timeIndex);
+        return new AddCommand(new Deadline(content, inputStr.substring(timeIndex + 4)));
+    }
+
+    public static Command parseEvent(String inputStr) {
+        int startIndex = inputStr.indexOf("/from");
+        String content = inputStr.substring(6, startIndex);
+        int endIndex = inputStr.indexOf("/to");
+        String startTime = inputStr.substring(startIndex + 6, endIndex - 1);
+        String endTime = inputStr.substring(endIndex + 4);
+        return new AddCommand(new Event(content, startTime, endTime));
+    }
+
+    public static Command parseDelete(String inputStr, TaskList tasks) throws Exception {
+        String indexStr = inputStr.substring(7);
+        int index = Integer.parseInt(indexStr);
+        tasks.checkInBound(index);
+        return new DeleteCommand(index);
+    }
+
     /**
      * Parses string into commands
      * @param inputStr original user input
@@ -67,35 +103,19 @@ public class Parser {
             case DISPLAY:
                 return new DisplayCommand();
             case MARK:
-                String indexStr = inputStr.substring(5);
-                int index = Integer.parseInt(indexStr);
-                tasks.checkInBound(index);
-                return new MarkCommand(index, true);
+                return MarkCommand.parseMark(inputStr, tasks);
             case UNMARK:
-                indexStr = inputStr.substring(7);
-                index = Integer.parseInt(indexStr);
-                tasks.checkInBound(index);
-                return new MarkCommand(index, false);
+                return MarkCommand.parseUnmark(inputStr, tasks);
             case TODO:
-                return new AddCommand(new ToDo(inputStr.substring(5)));
+                return AddCommand.parseTodo(inputStr);
             case FIND:
-                return new FindCommand(inputStr.substring(5));
+                return FindCommand.parseFind(inputStr);
             case DEADLINE:
-                int timeIndex = inputStr.indexOf("/by");
-                String content = inputStr.substring(9, timeIndex);
-                return new AddCommand(new Deadline(content, inputStr.substring(timeIndex + 4)));
+                return AddCommand.parseDeadline(inputStr);
             case EVENT:
-                int startIndex = inputStr.indexOf("/from");
-                content = inputStr.substring(6, startIndex);
-                int endIndex = inputStr.indexOf("/to");
-                String startTime = inputStr.substring(startIndex + 6, endIndex - 1);
-                String endTime = inputStr.substring(endIndex + 4);
-                return new AddCommand(new Event(content, startTime, endTime));
+                return AddCommand.parseEvent(inputStr);
             case DELETE:
-                indexStr = inputStr.substring(7);
-                index = Integer.parseInt(indexStr);
-                tasks.checkInBound(index);
-                return new DeleteCommand(index);
+                return DeleteCommand.parseDelete(inputStr, tasks);
             case EXIT:
                 return new ExitCommand();
             default:

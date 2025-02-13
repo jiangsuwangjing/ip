@@ -22,10 +22,11 @@ public interface Ui {
     void printExitMsg();
 
     /**
-     * Prints how many tasks there are
-     * @param count number of tasks
+     * Return the string to be printed when the task count is requested
+     * @param count the count of tasks
+     * @return the message to be printed
      */
-    void printTaskCount(int count);
+    String getTaskCount(int count);
 
     /**
      * Prints the response message when a task is added
@@ -33,6 +34,13 @@ public interface Ui {
      * @param count the count after adding the task
      */
     void addItemResponse(String task, int count);
+
+    /**
+     * Prints the response message when a task is deleted
+     * @param task task details
+     * @param count the count after deleting the task
+     */
+    void deleteTaskResponse(String task, int count);
 
     /**
      * Shows the error message when getting the error

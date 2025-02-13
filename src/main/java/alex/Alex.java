@@ -22,24 +22,6 @@ public class Alex {
         this.ui = ui;
     }
 
-    /**
-     * The main execution logic
-     */
-//    public void run() {
-//        ui.printWelcomeMsg();
-//        boolean isExit = false;
-//        while (!isExit) {
-//            try {
-//                String inputStr = ui.readCommand();
-//                Command command = Parser.parse(inputStr, tasks);
-//                command.execute(tasks, ui, storage);
-//                isExit = command.isExit();
-//            } catch (Exception e) {
-//                ui.showErrorMsg(e);
-//            }
-//        }
-//    }
-
     public void run(String inputStr) {
         try {
             Command command = Parser.parse(inputStr, tasks);
