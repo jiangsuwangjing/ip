@@ -71,6 +71,28 @@ public class TaskList {
         }
     }
 
+    public void mark(int[] range, boolean isDone, Ui ui, Storage storage) {
+        try {
+            StringBuilder responseMsg = new StringBuilder(getMarkInitialMsg(isDone));
+            for (int i = range[0]; i <= range[1]; i++) {
+                list.get(i - 1).setStatus(isDone);
+                responseMsg.append(list.get(i - 1) + "\n");
+                storage.updateLineInFile(i, list.get(i - 1).getSavedDataFormat().stripTrailing());
+            }
+            ui.printMsg(responseMsg.toString());
+        } catch (IOException e) {
+            ui.showErrorMsg(e);
+        }
+    }
+
+    public String getMarkInitialMsg(boolean isDone) {
+        if (isDone) {
+            return "Nice! I've marked these tasks as done:\n";
+        } else {
+            return "Ok, I've marked these tasks as not done yet:\n";
+        }
+    }
+
     /**
      * Deletes a task from the list
      * @param index index of the task to delete counting form 1
@@ -94,7 +116,7 @@ public class TaskList {
      * @throws ListOutOfBoundException
      */
     public boolean checkInBound(int index) throws ListOutOfBoundException {
-        if (index > list.size() || index < 0) {
+        if (index > list.size() || index <= 0) {
             throw new ListOutOfBoundException();
         }
         return true;
