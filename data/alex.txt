@@ -1,8 +1,5 @@
 D | 1 | ads | 12
 T | 0 | asdf
-T | 0 | asdfff
-T | 0 | reading
-T | 1 | asdf
 T | 1 | asd
 T | 1 | dd
 D | 1 | asdf | 239283

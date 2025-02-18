@@ -109,6 +109,20 @@ public class TaskList {
         }
     }
 
+    public void delete(int[] range, Ui ui, Storage storage) {
+        try {
+            StringBuilder responseMsg = new StringBuilder("Noted. I've removed these tasks:\n");
+            for (int i = range[1]; i >= range[0]; i--) {
+                responseMsg.append(list.get(i - 1) + "\n");
+                list.remove(i - 1);
+                storage.deleteLineFromFile(i);
+            }
+            ui.printMsg(responseMsg.toString());
+        } catch (IOException e) {
+            ui.showErrorMsg(e);
+        }
+    }
+
     /**
      * Checks if the index is within the bound
      * @param index counting from 1

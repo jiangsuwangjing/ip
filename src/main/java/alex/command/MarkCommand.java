@@ -1,5 +1,6 @@
 package alex.command;
 
+import alex.Parser;
 import alex.Storage;
 import alex.Ui;
 import alex.task.TaskList;
@@ -14,8 +15,8 @@ public class MarkCommand extends Command {
         this.markDone = markDone;
     }
 
-    public MarkCommand(int start, int end, boolean markDone) {
-        this.range = new int[]{start, end};
+    public MarkCommand(int[] range, boolean markDone) {
+        this.range = range;
         this.markDone = markDone;
     }
 
@@ -31,16 +32,8 @@ public class MarkCommand extends Command {
     public static Command parseMark(String inputStr, TaskList tasks) throws Exception {
         String indexStr = inputStr.substring(5);
         if (indexStr.contains("-")) {
-            String[] range = indexStr.split("-");
-            int start = Integer.parseInt(range[0]);
-            int end = Integer.parseInt(range[1]);
-            tasks.checkInBound(start);
-            tasks.checkInBound(end);
-
-            if (start > end) {
-                return new MarkCommand(end, start, true);
-            }
-            return new MarkCommand(start, end, true);
+            int[] range = Parser.parseRange(indexStr, tasks);
+            return new MarkCommand(range, true);
         }
         int index = Integer.parseInt(indexStr);
         tasks.checkInBound(index);
@@ -50,12 +43,8 @@ public class MarkCommand extends Command {
     public static Command parseUnmark(String inputStr, TaskList tasks) throws Exception {
         String indexStr = inputStr.substring(7);
         if (indexStr.contains("-")) {
-            String[] range = indexStr.split("-");
-            int start = Integer.parseInt(range[0]);
-            int end = Integer.parseInt(range[1]);
-            tasks.checkInBound(start);
-            tasks.checkInBound(end);
-            return new MarkCommand(start, end, false);
+            int[] range = Parser.parseRange(indexStr, tasks);
+            return new MarkCommand(range, true);
         }
         int index = Integer.parseInt(indexStr);
         tasks.checkInBound(index);
