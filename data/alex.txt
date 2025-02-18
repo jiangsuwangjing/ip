@@ -1,9 +1,5 @@
-D | 1 | A | 1928-12-02
-D | 0 |  | kkkd
-T | 1 | asdf
-T | 0 | asdfff
-T | 0 | reading
+D | 1 | ads | 12
 T | 0 | asdf
-T | 0 | asd
-T | 0 | dd
-0 | sdf
+T | 1 | asd
+T | 1 | dd
+D | 1 | asdf | 239283

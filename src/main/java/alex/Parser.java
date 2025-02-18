@@ -51,42 +51,6 @@ public class Parser {
         }
     }
 
-    public static Command parseMark(String inputStr, TaskList tasks) throws Exception {
-        String indexStr = inputStr.substring(5);
-        int index = Integer.parseInt(indexStr);
-        tasks.checkInBound(index);
-        return new MarkCommand(index, true);
-    }
-
-    public static Command parseUnmark(String inputStr, TaskList tasks) throws Exception {
-        String indexStr = inputStr.substring(7);
-        int index = Integer.parseInt(indexStr);
-        tasks.checkInBound(index);
-        return new MarkCommand(index, false);
-    }
-
-    public static Command parseDeadline(String inputStr) {
-        int timeIndex = inputStr.indexOf("/by");
-        String content = inputStr.substring(9, timeIndex);
-        return new AddCommand(new Deadline(content, inputStr.substring(timeIndex + 4)));
-    }
-
-    public static Command parseEvent(String inputStr) {
-        int startIndex = inputStr.indexOf("/from");
-        String content = inputStr.substring(6, startIndex);
-        int endIndex = inputStr.indexOf("/to");
-        String startTime = inputStr.substring(startIndex + 6, endIndex - 1);
-        String endTime = inputStr.substring(endIndex + 4);
-        return new AddCommand(new Event(content, startTime, endTime));
-    }
-
-    public static Command parseDelete(String inputStr, TaskList tasks) throws Exception {
-        String indexStr = inputStr.substring(7);
-        int index = Integer.parseInt(indexStr);
-        tasks.checkInBound(index);
-        return new DeleteCommand(index);
-    }
-
     /**
      * Parses string into commands
      * @param inputStr original user input
@@ -125,6 +89,20 @@ public class Parser {
             throw e;
         } catch (Exception e) {
             throw new CommandFormatException();
+        }
+    }
+
+    public static int[] parseRange(String rangeStr, TaskList tasks) throws AlexException {
+        String[] range = rangeStr.split("-");
+        int start = Integer.parseInt(range[0]);
+        int end = Integer.parseInt(range[1]);
+        tasks.checkInBound(start);
+        tasks.checkInBound(end);
+
+        if (start > end) {
+            return new int[]{end, start};
+        } else {
+            return new int[]{start, end};
         }
     }
 }

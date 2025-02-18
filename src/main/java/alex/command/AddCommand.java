@@ -6,6 +6,7 @@ import alex.task.Deadline;
 import alex.task.Event;
 import alex.task.Task;
 import alex.task.TaskList;
+import alex.task.ToDo;
 
 public class AddCommand extends Command {
     private Task task;
@@ -19,7 +20,7 @@ public class AddCommand extends Command {
     }
 
     public static Command parseTodo(String inputStr) {
-        return new AddCommand(new Task(inputStr.substring(5)));
+        return new AddCommand(new ToDo(inputStr.substring(5)));
     }
     public static Command parseEvent(String inputStr) {
         int startIndex = inputStr.indexOf("/from");
