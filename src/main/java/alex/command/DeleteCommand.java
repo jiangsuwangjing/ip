@@ -3,6 +3,7 @@ package alex.command;
 import alex.Parser;
 import alex.Storage;
 import alex.Ui;
+import alex.exceptions.MissingContentException;
 import alex.task.TaskList;
 
 public class DeleteCommand extends Command {
@@ -26,6 +27,13 @@ public class DeleteCommand extends Command {
         tasks.delete(this.index, ui, storage);
     }
 
+    /**
+     * Parse a input string to a delete command
+     * @param inputStr user input
+     * @param tasks task list
+     * @return a delete command
+     * @throws Exception when the input does not contain integer
+     */
     public static Command parseDelete(String inputStr, TaskList tasks) throws Exception {
         String indexStr = inputStr.substring(7);
 

@@ -23,6 +23,11 @@ public class FindCommand extends Command {
         ui.showSearchResult(result);
     }
 
+    /**
+     * Parse user input to a find command
+     * @param inputStr user input
+     * @return find command
+     */
     public static Command parseFind(String inputStr) {
         String keyword = inputStr.substring(5);
         return new FindCommand(keyword);

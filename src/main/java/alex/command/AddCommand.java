@@ -20,9 +20,21 @@ public class AddCommand extends Command {
         tasks.addItem(task, ui, storage);
     }
 
+    /**
+     * Parse a input string to a todo command
+     * @param inputStr the user input
+     * @return todo command
+     */
     public static Command parseTodo(String inputStr) {
         return new AddCommand(new ToDo(inputStr.substring(5)));
     }
+
+    /**
+     * Parse a input string to a event command
+     * @param inputStr the user input
+     * @return event command
+     * @throws MissingContentException when the content is empty
+     */
     public static Command parseEvent(String inputStr) throws MissingContentException {
         int startIndex = inputStr.indexOf("/from");
         String content = inputStr.substring(6, startIndex);
@@ -35,6 +47,12 @@ public class AddCommand extends Command {
         return new AddCommand(new Event(content, startTime, endTime));
     }
 
+    /**
+     * Parse a input string to a deadline command
+     * @param inputStr the user input
+     * @return deadline command
+     * @throws MissingContentException when the content is empty
+     */
     public static Command parseDeadline(String inputStr) throws MissingContentException {
         int timeIndex = inputStr.indexOf("/by");
         String content = inputStr.substring(9, timeIndex);

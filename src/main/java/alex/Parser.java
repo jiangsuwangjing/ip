@@ -92,6 +92,13 @@ public class Parser {
         }
     }
 
+    /**
+     * Parses the user input representing a range
+     * @param rangeStr the range input in format of from-to
+     * @param tasks the task list
+     * @return a pair of starting and ending index
+     * @throws AlexException when the range is out of bound
+     */
     public static int[] parseRange(String rangeStr, TaskList tasks) throws AlexException {
         String[] range = rangeStr.split("-");
         int start = Integer.parseInt(range[0]);

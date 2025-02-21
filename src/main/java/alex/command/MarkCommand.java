@@ -40,6 +40,7 @@ public class MarkCommand extends Command {
         return new MarkCommand(index, true);
     }
 
+
     public static Command parseUnmark(String inputStr, TaskList tasks) throws Exception {
         String indexStr = inputStr.substring(7);
         if (indexStr.contains("-")) {

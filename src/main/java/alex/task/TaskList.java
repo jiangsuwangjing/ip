@@ -36,16 +36,16 @@ public class TaskList {
 
     /**
      * Display all the tasks in the list
+     * @param ui current ui
      */
-    public void displayList() {
-        System.out.println("Here are the tasks in your list");
-        for (int i = 0; i < list.size(); i++) {
-            System.out.printf("%d.%s\n", i + 1, list.get(i).toString());
-        }
-    }
-
     public void displayList(Ui ui) {
-        StringBuilder resultMessage = new StringBuilder("Here are the tasks in your list:\n");
+        StringBuilder resultMessage;
+        if (list.size() == 0) {
+            resultMessage = new StringBuilder("Seems like you haven't created any task. Add them now!");
+        } else {
+            resultMessage = new StringBuilder("Here are the tasks in your list:\n");
+        }
+
         int count = 1;
         for (Task task : list) {
             resultMessage.append(count).append(". ").append(task).append("\n");
@@ -71,6 +71,13 @@ public class TaskList {
         }
     }
 
+    /**
+     * Set the status of a task of a given index
+     * @param range range of indices of the task counting from 1
+     * @param isDone the target status
+     * @param ui system ui
+     * @param storage storage to save data
+     */
     public void mark(int[] range, boolean isDone, Ui ui, Storage storage) {
         try {
             StringBuilder responseMsg = new StringBuilder(getMarkInitialMsg(isDone));
@@ -85,7 +92,7 @@ public class TaskList {
         }
     }
 
-    public String getMarkInitialMsg(boolean isDone) {
+    private String getMarkInitialMsg(boolean isDone) {
         if (isDone) {
             return "Nice! I've marked these tasks as done:\n";
         } else {
@@ -109,6 +116,12 @@ public class TaskList {
         }
     }
 
+    /**
+     * Deletes a range of tasks from the list
+     * @param range range of indices of the task to delete counting form 1
+     * @param ui
+     * @param storage
+     */
     public void delete(int[] range, Ui ui, Storage storage) {
         try {
             StringBuilder responseMsg = new StringBuilder("Noted. I've removed these tasks:\n");
@@ -153,16 +166,6 @@ public class TaskList {
      */
     public ArrayList<Task> getTasks() {
         return list;
-    }
-
-    public ArrayList<Task> findTasks(String keyword) {
-        ArrayList<Task> result = new ArrayList<>();
-        for (Task task : list) {
-            if (task.getContent().toLowerCase().contains(keyword.toLowerCase())) {
-                result.add(task);
-            }
-        }
-        return result;
     }
 
     @Override
