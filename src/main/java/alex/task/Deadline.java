@@ -33,7 +33,7 @@ public class Deadline extends Task {
      * Checks if the time given is in valid date format that can be parsed
      * @return if the format is valid
      */
-    public boolean isValidDateFormat() {
+    private boolean isValidDateFormat() {
         try {
             time = LocalDate.parse(timeStr);
             return true;

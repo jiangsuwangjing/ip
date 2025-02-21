@@ -1,8 +1,13 @@
 package alex.task;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class Event extends Task {
     private String startTime;
     private String endTime;
+    private LocalDate startTimeDate;
+    private LocalDate endTimeDate;
 
     /**
      * Constructor for new event
@@ -39,6 +44,17 @@ public class Event extends Task {
         this.endTime = end.trim();
     }
 
+    private boolean isValidDateFormat() {
+        try {
+            startTimeDate = LocalDate.parse(startTime);
+            endTimeDate = LocalDate.parse(endTime);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+
     @Override
     public String getSavedDataFormat() {
         return "E | " + super.getSavedDataFormat() + " | " + startTime + " | " + endTime + "\n";
@@ -46,6 +62,9 @@ public class Event extends Task {
 
     @Override
     public String toString() {
+        if (isValidDateFormat()) {
+            return "[E]" + super.toString() + " (from: " + startTimeDate.format(DateTimeFormatter.ofPattern("MMM d yyyy")) + " to: " + endTimeDate.format(DateTimeFormatter.ofPattern("MMM d yyyy")) + ")";
+        }
         return "[E]" + super.toString() + " (from: " + startTime + " to: " + endTime + ")";
     }
 }
