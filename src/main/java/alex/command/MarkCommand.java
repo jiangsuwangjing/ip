@@ -44,7 +44,7 @@ public class MarkCommand extends Command {
         String indexStr = inputStr.substring(7);
         if (indexStr.contains("-")) {
             int[] range = Parser.parseRange(indexStr, tasks);
-            return new MarkCommand(range, true);
+            return new MarkCommand(range, false);
         }
         int index = Integer.parseInt(indexStr);
         tasks.checkInBound(index);

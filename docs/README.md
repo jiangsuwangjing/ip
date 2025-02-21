@@ -26,7 +26,7 @@ Deadlines are tasks that need to be completed by a certain date. To add a deadli
 
 You can specify the date in the format YYYY-MM-DD as well so that Alex knows when exactly the task is due.
 
-Eg. _deadline submit report /by 2025-02-12 --> this will add a deadline "submit report" and due date 12 Feb 2025.
+Eg. _deadline submit report /by 2025-02-12_ --> this will add a deadline "submit report" and due date 12 Feb 2025.
 
 ### Adding Events
 Events are tasks that have a start and end time. To add an event task, use the following command:

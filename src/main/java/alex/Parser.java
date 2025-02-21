@@ -58,7 +58,7 @@ public class Parser {
      * @return the command that can be executed
      * @throws Exception from parsing the string, mostly AlexException
      */
-    public static Command parse(String inputStr, TaskList tasks) throws Exception {
+    public static Command parse(String inputStr, TaskList tasks) throws AlexException {
         try {
             CommandType commandType;
             commandType = Parser.extractCommand(inputStr);
