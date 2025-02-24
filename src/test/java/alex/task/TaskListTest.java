@@ -1,5 +1,6 @@
 package alex.task;
 
+import alex.MockUi;
 import alex.Storage;
 import alex.Ui;
 
@@ -10,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 public class TaskListTest {
     private TaskList taskList = new TaskList();
-    private Ui ui = new Ui();
+    private Ui ui = new MockUi();
     private Storage storage = new Storage("data/test.txt");
 
     public void resetTaskList() {

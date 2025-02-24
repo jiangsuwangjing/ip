@@ -20,7 +20,7 @@ public class PaserTest {
     private void loadTasks() {
         this.taskList = new TaskList();
         this.storage = new Storage("data/test.txt");
-        this.ui = new Ui();
+        this.ui = new MockUi();
 
         ToDo todo = new ToDo("Lecture 1");
         Deadline deadline = new Deadline("PS1", "2025-02-04");
